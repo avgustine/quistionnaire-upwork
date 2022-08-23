@@ -1,0 +1,5 @@
+<mat-label style="margin-bottom: 5px;">Your answer</mat-label>
+  <mat-radio-group required="true" style="margin-top: 5px; display: flex;
+  flex-direction: column;" aria-label="Answers" [(ngModel)]="value" (change)="validate(); answer.emit(value)">
+    <mat-radio-button [disabled]="answered" *ngFor="let option of options" [value]="option.optionId">{{option.optionText}}</mat-radio-button>
+  </mat-radio-group>

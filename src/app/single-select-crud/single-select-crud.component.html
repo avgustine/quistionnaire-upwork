@@ -1,0 +1,14 @@
+<div style="display: flex; flex-direction: column;">
+  <div *ngFor="let option of options" style="display: inherit;
+  margin: 1% 0;
+  justify-content: space-between;">
+<mat-form-field class="example-full-width" appearance="fill" style="flex-grow: 1; " >
+  <mat-label>Option text</mat-label>
+  <input required="true" matInput placeholder="Option text" [(ngModel)]="option.optionText" (change)="this.changed.emit(this.options)">
+  <!-- <input matInput placeholder="Option text" (change)="changeOptionTextchange($event)"> -->
+</mat-form-field>
+<!-- <button mat-flat-button color="accent" (click)="removeOption(option.optionId) ">remove</button> -->
+<button mat-flat-button color="accent" (click)="removeOption(option.optionId) ; this.changed.emit(this.options)">remove</button>
+</div>
+<button mat-flat-button color="accent" (click)="addOption()" style="margin: 1% 0;">add</button>
+</div>

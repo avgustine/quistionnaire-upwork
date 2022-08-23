@@ -1,0 +1,36 @@
+<div >
+  <as-split direction="horizontal" >
+    <as-split-area [size]="50" >
+      <div style="width: 100%; height: auto; display: flex; flex-direction: column;">
+        <div *ngIf="unasweredQuestions.length > 0; else noQuestionsUnanswered">
+          <app-question-card (answer)="saveAnswer($event)" *ngFor="let question of unasweredQuestions" [question]="question" [answerMode]="true"></app-question-card>
+        </div>
+        <ng-template #noQuestionsUnanswered>
+          <div style="margin: auto;
+        margin-top: 40vh;
+        font-size: 15pt;
+        filter: opacity(0.5);
+        font-weight: bold;">
+            No Unanswered questions stored.
+          </div>
+        </ng-template>
+        </div>
+    </as-split-area>
+    <as-split-area [size]="50">
+      <div style="width: 100%; height: auto; display: flex; flex-direction: column;">
+        <div *ngIf="answeredQuestions.length > 0; else noQuestionsAnswered">
+          <app-question-card (unanswer)="removeAnswer($event)" *ngFor="let question of answeredQuestions" [question]="question" [answerMode]="true"></app-question-card>
+        </div>
+        <ng-template #noQuestionsAnswered>
+          <div style="margin: auto;
+        margin-top: 40vh;
+        font-size: 15pt;
+        filter: opacity(0.5);
+        font-weight: bold;">
+            No Answered questions stored.
+          </div>
+        </ng-template>
+        </div>
+    </as-split-area>
+  </as-split>
+</div>

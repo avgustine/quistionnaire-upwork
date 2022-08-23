@@ -1,0 +1,5 @@
+<mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+  <mat-label>Explain your answer</mat-label>
+  <textarea required="true" [maxlength]="charsLimit" [readonly]="answered" [(ngModel)]="value" (change)="validate() ; answer.emit(value)" matInput placeholder="Type here..."></textarea>
+  <mat-hint align="end">{{value?.length || 0}}/{{charsLimit}}</mat-hint>
+</mat-form-field>

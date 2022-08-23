@@ -1,0 +1,24 @@
+<div style="width: 50%; height: auto; display: flex; flex-direction: column; margin: auto;">
+  <mat-error *ngFor="let err of formErrors">{{err}}</mat-error>
+  <mat-form-field appearance="fill">
+
+    <mat-label>Question Text</mat-label>
+    <input matInput aria-label="Quesiton Text" (change)="validateQuestion()" required="true" placeholder="Question Text" [(ngModel)]="question.questionText">
+  </mat-form-field>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Question Type</mat-label>
+
+
+  </mat-form-field> -->
+  <mat-label style="margin-bottom: 5px;">Questione Type</mat-label>
+  <mat-radio-group (change)="validateQuestion()" required="true" style="margin-top: 5px; display: flex;
+  flex-direction: column;" [(ngModel)]="question.type" aria-label="Question Type">
+    <mat-radio-button  *ngFor="let questionType of questionTypes" [value]="questionType.type">{{questionType.text}}</mat-radio-button>
+  </mat-radio-group>
+  <ng-container [ngSwitch]="question.type">
+    <app-single-select-crud *ngSwitchCase="'SingleSelect'" [options]="question.options" (changed)="setOptions($event)"></app-single-select-crud>
+    <app-single-select-crud *ngSwitchCase="'MultiSelection'" [options]="question.options" (changed)="setOptions($event)"></app-single-select-crud>
+  </ng-container>
+  <button mat-flat-button color="accent" [disabled]="formHasError" (click)="save()">Save</button>
+
+</div>

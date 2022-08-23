@@ -1,0 +1,16 @@
+<mat-label style="margin-bottom: 5px;">Your answer</mat-label>
+<!-- <ng-container *ngIf="!answered; else readonly"> -->
+  <ng-container>
+<li  style="list-style: none;" *ngFor="let option of value">
+  <mat-checkbox [value]="option.optionId.toString()" [(ngModel)]="option.checked" [disabled]="answered" (change)="validate() ; this.answer.emit(value)">
+    {{option.optionText}}
+  </mat-checkbox>
+</li>
+</ng-container>
+<!-- <ng-template  #readonly>
+<li  style="list-style: none;" *ngFor="let option of value; index as i">
+  <mat-checkbox [value]="option.optionId.toString()"[checked]="option.checked" disabled="true">
+    {{option.optionText}}
+  </mat-checkbox>
+</li>
+</ng-template> -->

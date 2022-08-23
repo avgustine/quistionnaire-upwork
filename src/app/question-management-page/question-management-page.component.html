@@ -1,0 +1,20 @@
+<div style="width: 100%; height: auto; display: flex; flex-direction: column;">
+<div *ngIf="(questions | async)?.length!=0; else noQuestions">
+  <app-question-card *ngFor="let question of (questions |async)" [question]="question" (delete)="deleteQuestion($event)"></app-question-card>
+</div>
+<ng-template #noQuestions>
+  <div style="margin: auto;
+margin-top: 40vh;
+font-size: 15pt;
+filter: opacity(0.5);
+font-weight: bold;">
+    No questions stored.
+  </div>
+</ng-template>
+
+<button mat-fab color="primary" matTooltip="Add question" routerLink="questions-crude/new"  style="position: fixed;
+right: 1%;
+bottom: 1%;">
+  <mat-icon>add</mat-icon>
+</button>
+</div>
